@@ -1,13 +1,16 @@
-# daisy-kickstart
+# QSPI-Flasher
 
-Quickly get up && running with Daisy 
+Flash data directly to Daisy QSPI
+
+This project demonstrates a simple use case- writing a WAV file directly to QSPI and reading it back for use in an audio callback.
 
 ## Getting Started
 
-1. First, [install the Daisy Toolchain](https://daisy.audio/tutorials/cpp-dev-env/#1-install-the-toolchain). 
-2. Once installed, run the `init.sh` script to configure your local copy of this repository. 
-3. This repository is configured for building SRAM apps. Connect your Daisy Seed via USB and [install a bootloader](https://flash.daisy.audio/) before proceeding.
-4. With your device in program mode, use `run.sh` (or `SHIFT+CMD+B` in VSCode) to build programs and flash them to your Daisy.
+1. Initialize the project: `./init.sh`
+2. Use `./run.sh` to flash the WAV file and firmware for reading it back. The script will automatically connect to the Daisy after flashing and log serial output to `log.txt`.
 
-> [!NOTE]
-> When developing for the Daisy, it is often useful to use serial monitoring for testing and debugging. If developing in VSCode, we recommend installing Microsoft's [serial monitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor), which will add easy access to serial monitoring via the terminal panel.
+### Files
+
+- `generate_wav.py` - Generates a 220Hz sine wave WAV file
+- `flash_wav.sh` - Prepares and flashes the WAV to QSPI
+- `src/main.cpp` - Firmware that reads WAV from QSPI and plays it back
